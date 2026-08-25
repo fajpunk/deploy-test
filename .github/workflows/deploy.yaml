@@ -17,5 +17,9 @@ jobs:
     environment:
       name: ${{ inputs.environment }}
 
+    concurrency:
+      group: deploy-${{ inputs.environment }}
+      queue: max
+
     steps:
       - run: './scripts/deploy.sh'
